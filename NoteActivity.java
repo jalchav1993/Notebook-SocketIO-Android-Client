@@ -27,11 +27,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.github.nkzawa.emitter.Emitter;
+import com.github.nkzawa.socketio.client.Socket;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.utep.cs.cs4330.notebookio.fileIo.NotebookRTS;
 import edu.utep.cs.cs4330.notebookio.utility.Tuple;
 
 import java.util.ArrayList;
@@ -41,7 +46,10 @@ public class NoteActivity extends AppCompatActivity implements KeyEvent.Callback
     private StringBuffer buffer;
     private JSONObject note;
     private JSONArray spans;
+    private Socket socket;
+    private boolean textFlag = false;
     private int format;
+    private EditText noteView;
     boolean isBold = false, isItalics = false, isUnderlined = false;
     private NoteWorker noteWorker = new NoteWorker();
     int end = 17;
@@ -61,7 +69,12 @@ public class NoteActivity extends AppCompatActivity implements KeyEvent.Callback
             colorPickerList.add(new Tuple<>(R.drawable.yellow, "yellow"));//
 
         }
-
+        noteView = findViewById(R.id.note_state);
+        NotebookRTS notebookRTS = (NotebookRTS) getApplication();
+        socket = notebookRTS.getSocket();
+        socket.on("typing", typing);
+        socket.on("getnotes-request-accepted", notesAccepted);
+        socket.emit("get-note-request");
         //actionBar.
         final android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         //setActionBar(toolbar);
@@ -81,6 +94,8 @@ public class NoteActivity extends AppCompatActivity implements KeyEvent.Callback
         initialize(10, 1000, "#FFFFF","MonoSans", paragraph);
         EditText noteView = findViewById(R.id.note_state);
         noteView.addTextChangedListener(new TextWatcher() {
+            Handler handle = new Handler();
+            Editable old;
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 Log.d("__ before text changed", s +" "+start+" "+count+" "+after);
@@ -89,41 +104,14 @@ public class NoteActivity extends AppCompatActivity implements KeyEvent.Callback
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 Log.d("__ on text changed", s +" "+start+" "+count+" "+before);
-                int spanEnd, spanStart;
-                JSONObject span;
-                try {
-                    JSONArray spans = (JSONArray) note.get("spans");
-                    Log.d("__ ", spans.length() +" ");
-
-                    span = (JSONObject) spans.get(spans.length()-1);
-                    spanEnd = span.getInt("end");
-                    spanStart = span.getInt("start");
-                    Log.d("__ span size", spanStart +" "+spanEnd);
-                    if(spanEnd < spanStart && spans.length() > 1){
-                        spans.remove(spans.length() - 1);
-                    }
-                    if(count>before){
-                        buffer.append(s.subSequence(start+before, count+start));
-                        span.put("end", count+start); // same format@!!!@@
-                    }else{
-                        buffer = new StringBuffer(buffer.substring(0, before+start-1)); // backspace
-                        span.put("end", before+start-1);
-                    }
-                    note.put("spans", spans);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                // handle new position?
-
-                // pass the buffer to the service update last span
+                if(!textFlag && s != "" && s != " "&& start + count + before != 0)
+                    socket.emit("typing", s.toString());
+                else textFlag = false;
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                Log.d("__ after text changed", s.toString());
-                Log.d("__ buffer", buffer.toString());
-                noteWorker.onEvent("text_changed");
+
             }
         });
         // add a text change listener
@@ -422,4 +410,39 @@ public class NoteActivity extends AppCompatActivity implements KeyEvent.Callback
             notify();
         }
     }
+    private Emitter.Listener typing = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    JSONObject data = (JSONObject) args[0];
+                    try {
+                        textFlag = true;
+                        noteView.setText(data.getString("paragraph"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+    };
+    private Emitter.Listener notesAccepted = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Log.d("__ result", args[0].toString());
+                    JSONObject data = (JSONObject) args[0];
+                    textFlag = true;
+                    try {
+                        noteView.setText(data.getString("result"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+    };
 }
