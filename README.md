@@ -5,7 +5,8 @@ Front end client of for Notebook-SocketIO-NodeJs
 See [notebook-SocketIO-NodeJS backend](https://github.com/jalchav1993/Notebook-SocketIO-NodeJS)
 
 ## Feature
-Full feature socket.io client style implemented (polling & websocket), based-on `socket.io@3.^` version
+Full feature socket.io client style implemented (polling & websocket), based-on `socket.io-client
+@"2.1.0",.^` version
 
 > Implemented in Java for Android Studio.
 
@@ -31,3 +32,6 @@ https://www.jetbrains.com/help/idea/2017.3/using-git-integration.html
 Recomend to import from GIT using Android Studio
 ```
 
+### Ackloledgements 
+Many thanks to the Socket.IO team, they do invaluable work: 
+see[socket.io-client](https://github.com/socketio/socket.io-client)

@@ -2,7 +2,7 @@
   "name": "Notebook-SocketIO-Android-Client",
   "version": "2.2.2",
   "keywords": [
-		"IO"
+		"IO",
     "realtime",
     "framework",
     "websocket",
