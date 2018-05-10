@@ -9,7 +9,9 @@ Full feature socket.io client style implemented (polling & websocket), based-on 
 
 > Implemented in Java for Android Studio.
 
-> The client is a shared note-taker that connects to a back end using github package socket.io-client, and broadcasts any text changes to all clients connected to the session; this allows multiple clients to edit a note. 
+> The client is a shared note-taker that connects to a back end using github package socket.io-client.
+
+> broadcasts any text changes to all clients connected to the session; this allows multiple clients to edit a note. 
 
 ## How to use
 
