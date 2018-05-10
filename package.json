@@ -1,6 +1,10 @@
 {
   "name": "Notebook-SocketIO-Android-Client",
   "version": "2.2.2",
+  "author":{
+      "name": "Jesus Alejandro Chavez-Pachicoa-Medi-Hotza",
+      "email": "jachavez21@miners.utep.edu"
+  },
   "keywords": [
     "IO",
     "realtime",
@@ -31,12 +35,6 @@
     "de.hdodenhof:circleimageview:1.2.1"
     "com.squareup.okhttp3:okhttp:3.8.1"
   },
-  "contributors": [
-    {
-      "name": "Jesus Alejandro Chavez-Pachicoa-Medi-Hotza",
-      "email": "jachavez21@miners.utep.edu"
-    }
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/jalchav1993/Notebook-SocketIO-Android-Client.git"
