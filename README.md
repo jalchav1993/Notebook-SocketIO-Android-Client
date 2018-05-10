@@ -5,11 +5,13 @@ Front end client of for Notebook-SocketIO-NodeJs
 See [notebook-SocketIO-NodeJS backend](https://github.com/jalchav1993/Notebook-SocketIO-NodeJS)
 
 ## Feature
-
+```
 Full feature socket.io client style implemented (polling & websocket), based-on `socket.io@3.^` version
 
-Implemented in Java for Android Studio
+Implemented in Java for Android Studio.
 
+The client is a shared note-taker that connects to a back end using github package socket.io-client, and broadcasts any text changes to all clients connected to the session; this allows multiple clients to edit a note. 
+```
 ## How to use
 
 ### Install
