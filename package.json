@@ -2,7 +2,7 @@
   "name": "Notebook-SocketIO-Android-Client",
   "version": "2.2.2",
   "keywords": [
-		"IO",
+    "IO",
     "realtime",
     "framework",
     "websocket",
@@ -13,23 +13,23 @@
   "main": "./app/src/main/",
   "files": "./app/src/main/res",
   "dependencies": {
-		    "com.android.support:appcompat-v7:27.1.1"
-		    "com.android.support.constraint:constraint-layout:1.1.0"
-		    "com.android.support:support-v4:27.1.1"
-		    "junit:junit:4.12"
-		    "com.android.support.test:runner:1.0.2"
-		    "com.android.support.test.espresso:espresso-core:3.0.2"
-		    "com.github.nkzawa:socket.io-client:0.3.0"
-		    "com.squareup.okhttp3:okhttp:3.8.1"
-		    "com.android.support:appcompat-v7:27.1.1"
-		    "de.hdodenhof:circleimageview:1.2.1"
-		    "com.android.support:appcompat-v7:27.1.1"
-		    "com.android.support:design:27.1.1"
+    "com.android.support:appcompat-v7:27.1.1"
+    "com.android.support.constraint:constraint-layout:1.1.0"
+    "com.android.support:support-v4:27.1.1"
+    "junit:junit:4.12"
+    "com.android.support.test:runner:1.0.2"
+    "com.android.support.test.espresso:espresso-core:3.0.2" 
+    "com.github.nkzawa:socket.io-client:0.3.0"
+    "com.squareup.okhttp3:okhttp:3.8.1"
+    "com.android.support:appcompat-v7:27.1.1"
+    "de.hdodenhof:circleimageview:1.2.1"
+    "com.android.support:appcompat-v7:27.1.1"
+    "com.android.support:design:27.1.1"
   },
   "devDependencies": {
     "com.github.nkzawa:socket.io-client:0.3.0"
-		"de.hdodenhof:circleimageview:1.2.1"
-		"com.squareup.okhttp3:okhttp:3.8.1"
+    "de.hdodenhof:circleimageview:1.2.1"
+    "com.squareup.okhttp3:okhttp:3.8.1"
   },
   "contributors": [
     {
