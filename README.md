@@ -34,4 +34,4 @@ Recomend to import from GIT using Android Studio
 
 ### Ackloledgements 
 Many thanks to the Socket.IO team, they do invaluable work: 
-see[socket.io-client](https://github.com/socketio/socket.io-client)
+see [socket.io-client](https://github.com/socketio/socket.io-client)
