@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="0dp"
+    android:orientation="vertical"
+    android:padding="0dp"
+    tools:context=".NoteActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/top_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:background="#CCCCCC"
+        android:padding="0dp"
+        android:paddingBottom="0dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp">
+
+        <ImageView
+            android:id="@+id/add_element"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+
+
+            android:padding="4dp"
+            app:srcCompat="@drawable/plust_thin_icon" />
+
+        <Spinner
+            android:id="@+id/test_size_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:spinnerMode="dropdown" />
+
+        <Spinner xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/test_color_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:spinnerMode="dropdown" />
+
+        <ImageView
+            android:id="@+id/set_bold"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:background="#0000"
+            android:onClick="setTextBold"
+            android:padding="10dp"
+            app:srcCompat="@drawable/bold_icon" />
+
+        <ImageView
+            android:id="@+id/set_italics"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:background="#0000"
+            android:onClick="setTextItalics"
+            android:padding="10dp"
+            app:srcCompat="@drawable/italics_icon" />
+
+        <ImageView
+            android:id="@+id/set_underline"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:background="#0000"
+            android:onClick="setTextUnderlined"
+            android:padding="10dp"
+            app:srcCompat="@drawable/underline_icon" />
+
+        <ImageView
+            android:id="@+id/set_erase"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:background="#0000"
+            android:padding="7dp"
+            app:srcCompat="@drawable/eraser_icon" />
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/note_state"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_margin="0dp"
+            android:background="@android:color/white"
+            android:ems="10"
+            android:gravity="start"
+            android:inputType="text"
+            android:lines="100"
+            android:padding="0dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/footer_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#CCCCCC" />
+    </LinearLayout>
+</LinearLayout>
